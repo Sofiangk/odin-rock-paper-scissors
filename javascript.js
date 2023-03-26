@@ -1,12 +1,18 @@
 let option = ["Rock", "Paper", "Scissors"];
 
-function getComputerChoice() {
-    return option[Math.floor(Math.random() * option.length)];
+function toTitleCase(playerSelection) {
+  return (
+    playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
+  );
 }
 
-function playRound(playerSelection) {
-  switch ((playerSelection, computerSelection)) {
-    case playerSelection === "Rock":
+function getComputerChoice() {
+  return option[Math.floor(Math.random() * option.length)];
+}
+
+function playRound(playerSelection, computerSelection) {
+  switch (playerSelection.toLowerCase()) {
+    case "rock":
       if (computerSelection === "Scissors") {
         return "You win! Rock beats Scissors!";
       } else if (computerSelection === "Paper") {
@@ -16,7 +22,7 @@ function playRound(playerSelection) {
       }
       break;
 
-    case playerSelection === "Paper":
+    case "paper":
       if (computerSelection === "Scissors") {
         return "You Lose! Scissors beats Paper!";
       } else if (computerSelection === "Rock") {
@@ -26,7 +32,7 @@ function playRound(playerSelection) {
       }
       break;
 
-    case playerSelection === "Scissors":
+    case "scissors":
       if (computerSelection === "Rock") {
         return "You Lose! Rock beats Scissors!";
       } else if (computerSelection === "Paper") {
@@ -38,6 +44,12 @@ function playRound(playerSelection) {
 
     default:
       return "Wrong entry!!";
+      break;
   }
 }
 
+const playerSelection = toTitleCase(prompt("What's your choice?"));
+console.log(playerSelection);
+const computerSelection = getComputerChoice();
+console.log(computerSelection);
+console.log(playRound(playerSelection, computerSelection));
