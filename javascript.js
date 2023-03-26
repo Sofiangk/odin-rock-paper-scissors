@@ -1,4 +1,4 @@
-let option = ["Rock", "Paper", "Scissors"];
+let option = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
   return option[Math.floor(Math.random() * option.length)];
@@ -7,9 +7,9 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   switch (playerSelection.toLowerCase()) {
     case "rock":
-      if (computerSelection === "Scissors") {
+      if (computerSelection === "scissors") {
         return "You win! Rock beats Scissors!";
-      } else if (computerSelection === "Paper") {
+      } else if (computerSelection === "paper") {
         return "You Lose! Paper beats Rock!";
       } else {
         return "It's a tie!";
@@ -17,9 +17,9 @@ function playRound(playerSelection, computerSelection) {
       break;
 
     case "paper":
-      if (computerSelection === "Scissors") {
+      if (computerSelection === "scissors") {
         return "You Lose! Scissors beats Paper!";
-      } else if (computerSelection === "Rock") {
+      } else if (computerSelection === "rock") {
         return "You Win! Paper beats Rock!";
       } else {
         return "It's a tie!";
@@ -27,9 +27,9 @@ function playRound(playerSelection, computerSelection) {
       break;
 
     case "scissors":
-      if (computerSelection === "Rock") {
+      if (computerSelection === "rock") {
         return "You Lose! Rock beats Scissors!";
-      } else if (computerSelection === "Paper") {
+      } else if (computerSelection === "paper") {
         return "You Win! Scissors beats Paper!";
       } else {
         return "It's a tie!";
@@ -44,6 +44,9 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   for (let i = 1; i <= 5; i++) {
+    let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+    let computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
   }
 }
 
