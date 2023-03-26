@@ -1,11 +1,5 @@
 let option = ["Rock", "Paper", "Scissors"];
 
-function toTitleCase(playerSelection) {
-  return (
-    playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
-  );
-}
-
 function getComputerChoice() {
   return option[Math.floor(Math.random() * option.length)];
 }
@@ -48,8 +42,13 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = toTitleCase(prompt("What's your choice?"));
-console.log(playerSelection);
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  for (let i = 1; i <= 5; i++) {
+  }
+}
+
+// const playerSelection = toTitleCase(prompt("What's your choice?"));
+// console.log(playerSelection);
+// const computerSelection = getComputerChoice();
+// console.log(computerSelection);
+// console.log(playRound(playerSelection, computerSelection));
