@@ -14,7 +14,7 @@ const computerScoreText = document.querySelector("#computer-score");
 
 choiceBtn.forEach((button) =>
   button.addEventListener("click", () => {
-    playerSelection = button.textContent;
+    playerSelection = button.id;
     computerSelection = getComputerChoice();
     playerText.textContent = `Player: ${playerSelection}`;
     computerText.textContent = `Computer: ${computerSelection}`;
