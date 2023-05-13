@@ -1,53 +1,41 @@
-let option = ["rock", "paper", "scissors"];
+let option = ["Rock", "Paper", "Scissors"];
+
+let computerSelection = "";
+let playerSelection = "";
+let playerText = document.querySelector("#playerText");
+let computerText = document.querySelector("#computerText");
+let resultText = document.querySelector("#resultText");
+let result = "";
+let choiceBtn = document.querySelectorAll(".choiceBtn");
+choiceBtn.forEach((button) =>
+  button.addEventListener("click", () => {
+    playerSelection = button.textContent;
+    computerSelection = getComputerChoice();
+    playerText.textContent = `Player: ${playerSelection}`;
+    computerText.textContent = `Computer: ${computerSelection}`;
+    result = playRound();
+    resultText.textContent = playRound();
+  })
+);
 
 function getComputerChoice() {
   return option[Math.floor(Math.random() * option.length)];
 }
 
-function playRound(playerSelection, computerSelection) {
-  switch (playerSelection.toLowerCase()) {
-    case "rock":
-      if (computerSelection === "scissors") {
-        return "You win! Rock beats Scissors!";
-      } else if (computerSelection === "paper") {
-        return "You Lose! Paper beats Rock!";
-      } else {
-        return "It's a tie!";
-      }
-      break;
-
-    case "paper":
-      if (computerSelection === "scissors") {
-        return "You Lose! Scissors beats Paper!";
-      } else if (computerSelection === "rock") {
-        return "You Win! Paper beats Rock!";
-      } else {
-        return "It's a tie!";
-      }
-      break;
-
-    case "scissors":
-      if (computerSelection === "rock") {
-        return "You Lose! Rock beats Scissors!";
-      } else if (computerSelection === "paper") {
-        return "You Win! Scissors beats Paper!";
-      } else {
-        return "It's a tie!";
-      }
-      break;
-
-    default:
-      return "Wrong entry!!";
-      break;
+function playRound() {
+  if (playerSelection === computerSelection) {
+    return "It's a tie!";
+  } else if (computerSelection === "Rock") {
+    return playerSelection === "Paper"
+      ? "You Win! Paper beats Rock!"
+      : "You Lose! Rock beats Scissors!";
+  } else if (computerSelection === "Paper") {
+    return playerSelection === "Scissors"
+      ? "You Win! Scissors beats Paper!"
+      : "You Lose! Paper beats Rock!";
+  } else if (computerSelection === "Scissors") {
+    return playerSelection === "Paper"
+      ? "You Lose! Scissors beats Paper!"
+      : "You Win! Paper beats Rock!";
   }
 }
-
-function game() {
-  for (let i = 1; i <= 5; i++) {
-    let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
-    let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-  }
-}
-
-game();
