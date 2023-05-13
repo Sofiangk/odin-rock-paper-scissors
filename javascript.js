@@ -1,20 +1,36 @@
 let option = ["Rock", "Paper", "Scissors"];
 
 let computerSelection = "";
+let computerScore = 0;
 let playerSelection = "";
-let playerText = document.querySelector("#playerText");
-let computerText = document.querySelector("#computerText");
-let resultText = document.querySelector("#resultText");
-let result = "";
-let choiceBtn = document.querySelectorAll(".choiceBtn");
+let playerScore = 0;
+
+const playerText = document.querySelector("#player-text");
+const computerText = document.querySelector("#computer-text");
+const resultText = document.querySelector("#result-text");
+const choiceBtn = document.querySelectorAll(".choiceBtn");
+const playerScoreText = document.querySelector("#player-score");
+const computerScoreText = document.querySelector("#computer-score");
+
 choiceBtn.forEach((button) =>
   button.addEventListener("click", () => {
     playerSelection = button.textContent;
     computerSelection = getComputerChoice();
     playerText.textContent = `Player: ${playerSelection}`;
     computerText.textContent = `Computer: ${computerSelection}`;
-    result = playRound();
     resultText.textContent = playRound();
+    playerScoreText.textContent = `Player Score: ${playerScore}`;
+    computerScoreText.textContent = `Computer Score: ${computerScore}`;
+    if (playerScore === 5) {
+      alert("YOU WIN!!!");
+      playerScore = 0;
+      computerScore = 0;
+    }
+    if (computerScore === 5) {
+      alert("GAME OVER!! YOU LOSE!!!");
+      playerScore = 0;
+      computerScore = 0;
+    }
   })
 );
 
@@ -26,16 +42,28 @@ function playRound() {
   if (playerSelection === computerSelection) {
     return "It's a tie!";
   } else if (computerSelection === "Rock") {
-    return playerSelection === "Paper"
-      ? "You Win! Paper beats Rock!"
-      : "You Lose! Rock beats Scissors!";
+    if (playerSelection === "Paper") {
+      playerScore++;
+      return "You Win! Paper beats Rock!";
+    } else {
+      computerScore++;
+      return "You Lose! Rock beats Scissors!";
+    }
   } else if (computerSelection === "Paper") {
-    return playerSelection === "Scissors"
-      ? "You Win! Scissors beats Paper!"
-      : "You Lose! Paper beats Rock!";
+    if (playerSelection === "Scissors") {
+      playerScore++;
+      return "You Win! Scissors beats Paper!";
+    } else {
+      computerScore++;
+      return "You Lose! Paper beats Rock!";
+    }
   } else if (computerSelection === "Scissors") {
-    return playerSelection === "Paper"
-      ? "You Lose! Scissors beats Paper!"
-      : "You Win! Paper beats Rock!";
+    if (playerSelection === "Rock") {
+      playerScore++;
+      return "You Win! Rock beats Scissors!";
+    } else {
+      computerScore++;
+      return "You Lose! Scissors beats Paper!";
+    }
   }
 }
