@@ -46,13 +46,6 @@ choiceSelection.forEach((image, index) => {
       playerScoreText.textContent = `Player: ${playerScore}`;
       cpuScoreText.textContent = `CPU: ${cpuScore}`;
 
-      // Add animation to score if player/cpu won
-      if (resultText === "You Win!!") {
-        playerScoreText.classList.add("point");
-      } else if (resultText === "You Lose!!") {
-        cpuScoreText.classList.add("point");
-      }
-
       if (playerScore === 5) {
         // Ending game after a player reaches 5 wins
         resultText.textContent = "YOU ARE THE WINNER!!!";
